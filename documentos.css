@@ -1,31 +1,39 @@
-body, html {
+body {
     box-sizing: border-box;
+}
+
+/* Remove scrollbars completely */
+html, body {
     overflow-x: hidden;
 }
 
-body::-webkit-scrollbar { display: none; }
-body { -ms-overflow-style: none; scrollbar-width: none; }
+body::-webkit-scrollbar {
+    display: none;
+}
 
-* { max-width: 100%; }
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
-/* Texto em gradiente */
+/* Ensure no horizontal overflow */
+* {
+    max-width: 100%;
+}
+
 .gradient-text {
     background: linear-gradient(135deg, #8B5CF6, #06B6D4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Cartões */
-.card-base {
-    background: linear-gradient(to bottom right, rgba(139,92,246,0.20), rgba(6,182,212,0.20));
-    padding: 2rem;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    text-align: center;
+.neon-glow {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(6, 182, 212, 0.2);
 }
 
 .card-hover {
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .card-hover:hover {
@@ -33,49 +41,145 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
 }
 
-/* Ícones */
-.icon-wrapper {
-    width: 5rem;
-    height: 5rem;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.bonus-table {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
-.icon-svg {
-    width: 3.5rem;
-    height: 3.5rem;
+@keyframes pulse-neon {
+    0%, 100% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(6, 182, 212, 0.4); }
 }
 
-/* Títulos e textos dos cards */
-.card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: .75rem;
-    background: linear-gradient(135deg, #8B5CF6, #06B6D4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.pulse-animation {
+    animation: pulse-neon 2s infinite;
 }
 
-.card-text {
-    color: #d1d5db;
-    margin-bottom: 1.25rem;
+/* Estilos de Acordeão (FAQ) - Mantidos, mas não usados nesta página */
+.accordion-header {
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Botão */
-.button-primary {
-    display: inline-block;
-    background: rgba(255,255,255,0.9);
-    color: #1f2937;
-    padding: 1rem 2rem;
-    font-weight: 600;
-    border-radius: 1rem;
-    transition: 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+.accordion-header:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
 }
 
-.button-primary:hover {
-    background: white;
-    transform: scale(1.05);
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion-content.active {
+    max-height: 1000px;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-icon.rotated {
+    transform: rotate(45deg);
+}
+
+/* Efeitos Diamond Card - Mantidos */
+@keyframes neon-flow {
+    0% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1); }
+    25% { box-shadow: 0 0 10px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.4), inset 0 0 15px rgba(6, 182, 212, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.8), 0 0 30px rgba(236, 72, 153, 0.5), inset 0 0 20px rgba(236, 72, 153, 0.3); }
+    75% { box-shadow: 0 0 10px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.4), inset 0 0 15px rgba(6, 182, 212, 0.2); }
+    100% { box-shadow: 0 0 5px rgba(139, 92, 246, 0.5), 0 0 10px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(139, 92, 246, 0.1); }
+}
+
+.diamond-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.diamond-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 0 20px rgba(139, 92, 246, 0.6),
+        0 0 40px rgba(6, 182, 212, 0.4),
+        0 0 60px rgba(236, 72, 153, 0.3),
+        0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: neon-pulse 1.5s infinite;
+}
+
+@keyframes neon-pulse {
+    0%, 100% { 
+        box-shadow: 
+            0 0 20px rgba(139, 92, 246, 0.6),
+            0 0 40px rgba(6, 182, 212, 0.4),
+            0 0 60px rgba(236, 72, 153, 0.3),
+            0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 30px rgba(139, 92, 246, 0.8),
+            0 0 60px rgba(6, 182, 212, 0.6),
+            0 0 90px rgba(236, 72, 153, 0.5),
+            0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+}
+
+@keyframes pulse-slow {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .neon-glow {
+        box-shadow: 0 0 10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(6, 182, 212, 0.2);
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+    }
+    
+    .diamond-card:hover {
+        transform: translateY(-3px) scale(1.01);
+        box-shadow: 
+            0 0 10px rgba(139, 92, 246, 0.6),
+            0 0 20px rgba(6, 182, 212, 0.4),
+            0 0 30px rgba(236, 72, 153, 0.3),
+            0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes neon-pulse {
+        0%, 100% { 
+            box-shadow: 
+                0 0 10px rgba(139, 92, 246, 0.6),
+                0 0 20px rgba(6, 182, 212, 0.4),
+                0 0 30px rgba(236, 72, 153, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        50% { 
+            box-shadow: 
+                0 0 15px rgba(139, 92, 246, 0.8),
+                0 0 30px rgba(6, 182, 212, 0.6),
+                0 0 45px rgba(236, 72, 153, 0.5),
+                0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .accordion-content.active {
+        max-height: 1500px;
+    }
 }

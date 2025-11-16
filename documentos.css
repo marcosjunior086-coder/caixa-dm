@@ -1,0 +1,81 @@
+body, html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+
+* { max-width: 100%; }
+
+/* Texto em gradiente */
+.gradient-text {
+    background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Cartões */
+.card-base {
+    background: linear-gradient(to bottom right, rgba(139,92,246,0.20), rgba(6,182,212,0.20));
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    text-align: center;
+}
+
+.card-hover {
+    transition: 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+/* Ícones */
+.icon-wrapper {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-svg {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+/* Títulos e textos dos cards */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: .75rem;
+    background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-text {
+    color: #d1d5db;
+    margin-bottom: 1.25rem;
+}
+
+/* Botão */
+.button-primary {
+    display: inline-block;
+    background: rgba(255,255,255,0.9);
+    color: #1f2937;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+}
+
+.button-primary:hover {
+    background: white;
+    transform: scale(1.05);
+}
